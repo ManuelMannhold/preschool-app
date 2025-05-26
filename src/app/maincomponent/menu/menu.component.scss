@@ -1,0 +1,36 @@
+.container {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+header {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    box-shadow: 0 0 15px;
+    font-size: 32px;
+    text-shadow: 1px 1px 2px white;
+}
+
+#content {
+    height: calc(100vh - 74px);
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around; 
+}
+
+button {
+    padding: 20px;
+    font-size: 32px;
+    border-radius: 15px;
+    max-width: 200px;
+
+    &:hover {
+        cursor: pointer;
+    }
+}
