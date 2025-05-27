@@ -1,0 +1,52 @@
+.container {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+h2 {
+    font-size: 40px;
+}
+
+#content {
+    height: calc(100vh - 47px);
+    width: 100%;
+}
+
+.apple-container {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 5px;
+}
+
+.apple-image {
+    width: calc(80% / 3);
+}
+
+.buttons {
+    height: 300px;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-end;
+
+    button {
+        height: 50%;
+        padding: 20px;
+        border-radius: 15px;
+        font-size: 32px;
+        cursor: pointer;
+
+        &:hover {
+            background-color: rgba(0, 0, 0, 0.1);
+        }
+    }
+}

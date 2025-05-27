@@ -1,0 +1,18 @@
+<div class="container">
+    <h2>Wie viele Äpfel siehst du?</h2>
+
+    <div id="content">
+        <div class="apple-container">
+  @for (apple of apples; track apple) {
+    <img [src]="apple" class="apple-image" alt="Apfel" />
+  }
+</div>
+    </div>
+    <div class="buttons">
+        <button>2</button>
+        <button>3</button>
+        <button>4</button>
+        <button>5</button>
+        <button>6</button>
+    </div>
+</div>
