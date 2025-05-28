@@ -4,6 +4,38 @@
     box-sizing: border-box;
 }
 
-body {
-    background-color: lightgreen;
+.blue {
+    background-color: blue;
 }
+
+.red {
+    background-color: red;
+}
+
+.yellow {
+    background-color: yellow;
+}
+
+body {
+    background-color: rgb(144, 238, 144);
+}
+
+a {
+    color: black;
+    text-decoration: none;
+}
+
+button {
+        height: 20%;
+        padding: 20px;
+        border-radius: 15px;
+        font-size: 32px;
+        cursor: pointer;
+        border: none;
+        box-shadow: 1px 1px 5px black;
+        text-shadow: 0 0 2px white;
+
+        &:hover {
+            transform: scale(1.1);
+        }
+    }
