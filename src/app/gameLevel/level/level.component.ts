@@ -24,4 +24,12 @@ export class LevelComponent {
       this.apples.push(`${this.appleImage}${randomAppleNumber}.png`);
     }
   }
+
+  checkApplesRightOrWrong(element: number) {
+    if(this.apples.length == element) {
+      console.log('das ist richtig');
+    } else {
+      console.log('das ist falsch');
+    }
+  }
 }
