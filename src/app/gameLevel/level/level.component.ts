@@ -5,11 +5,14 @@ import { Component } from '@angular/core';
   standalone: true,
   imports: [],
   templateUrl: './level.component.html',
-  styleUrl: './level.component.scss'
+  styleUrl: './level.component.scss',
 })
 export class LevelComponent {
   appleImage: string = '/assets/img/apple_';
   apples: string[] = [];
+  score = 0;
+  scoreIncreased = false;
+  questionIncreased = false;
 
   public ngOnInit(): void {
     this.constructApples();
@@ -23,25 +26,40 @@ export class LevelComponent {
       const randomAppleNumber = Math.floor(Math.random() * 6);
       this.apples.push(`${this.appleImage}${randomAppleNumber}.png`);
     }
+    setTimeout(() => {
+      this.questionIncreased = false;
+    }, 1000);
   }
 
   checkApplesRightOrWrong(element: number) {
-    if(this.apples.length == element) {
-      document.getElementById(`${element}`)?.classList.add('right');
+    let buttonsId = document.getElementById(`${element}`);
+    if (this.apples.length == element) {
+      buttonsId?.classList.add('right');
       setTimeout(() => {
-      this.nextQuestion(element)
-  }, 1000);
+        this.nextQuestion(element);
+      }, 1000);
+      this.scorePlus();
     } else {
       document.getElementById(`${element}`)?.classList.add('wrong');
       setTimeout(() => {
         document.getElementById(`${element}`)?.classList.remove('wrong');
       }, 1000);
-    };
+    }
+  }
+
+  scorePlus() {
+    if (!this.scoreIncreased) {
+      this.score += 1;
+      this.scoreIncreased = true;
+    }
   }
 
   nextQuestion(element: number) {
-    this.constructApples();
-    document.getElementById(`${element}`)?.classList.remove('right');
-    document.getElementById(`${element}`)?.classList.remove('right');
+    if (!this.questionIncreased) {
+      this.questionIncreased = true;
+      this.scoreIncreased = false;
+      this.constructApples();
+      document.getElementById(`${element}`)?.classList.remove('right');
+    }
   }
 }

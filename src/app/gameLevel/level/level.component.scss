@@ -28,7 +28,7 @@ h2 {
 }
 
 .apple-image {
-    width: calc(80% / 3);
+    width: 10%;
 }
 
 .buttons {
@@ -45,7 +45,15 @@ h2 {
     color: white;
 }
 
+.greyed {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
 .right {
     background-color: green;
     color: white;
+}
+
+#score {
+    text-align: center;
 }
