@@ -27,9 +27,21 @@ export class LevelComponent {
 
   checkApplesRightOrWrong(element: number) {
     if(this.apples.length == element) {
-      console.log('das ist richtig');
+      document.getElementById(`${element}`)?.classList.add('right');
+      setTimeout(() => {
+      this.nextQuestion(element)
+  }, 1000);
     } else {
-      console.log('das ist falsch');
-    }
+      document.getElementById(`${element}`)?.classList.add('wrong');
+      setTimeout(() => {
+        document.getElementById(`${element}`)?.classList.remove('wrong');
+      }, 1000);
+    };
+  }
+
+  nextQuestion(element: number) {
+    this.constructApples();
+    document.getElementById(`${element}`)?.classList.remove('right');
+    document.getElementById(`${element}`)?.classList.remove('right');
   }
 }

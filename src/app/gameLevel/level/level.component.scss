@@ -33,8 +33,19 @@ h2 {
 
 .buttons {
     height: 300px;
-    width: 100%;
+    width: 80%;
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-around;
     align-items: center;
+}
+
+.wrong {
+    background-color: red;
+    color: white;
+}
+
+.right {
+    background-color: green;
+    color: white;
 }
