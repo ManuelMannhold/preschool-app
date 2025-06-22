@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { Component, effect, inject, signal } from '@angular/core';
+import { NavigationEnd, Router, RouterLink } from '@angular/router';
+import { filter } from 'rxjs/operators';
+import { CountGameService } from '../../count-game.service';
 
 @Component({
   selector: 'app-level',
@@ -8,10 +10,13 @@ import { RouterLink } from '@angular/router';
   templateUrl: './level.component.html',
   styleUrl: './level.component.scss',
 })
-export class LevelComponent {
+export class LevelComponent{
   appleImage: string = '/assets/img/apple_';
   apples: string[] = [];
-  score = 0;
+  score:number = 0;
+  private router = inject(Router);
+  readonly currentUrl = signal(this.router.url);
+  setScore = inject(CountGameService);
   scoreIncreased = false;
   questionIncreased = false;
   correctAudio = new Audio('/assets/sounds/correct-sound.mp3');
@@ -19,6 +24,20 @@ export class LevelComponent {
 
   public ngOnInit(): void {
     this.constructApples();
+  }
+
+  constructor() {
+    this.router.events
+      .pipe(
+        filter((event): event is NavigationEnd => event instanceof NavigationEnd)
+      )
+      .subscribe((event) => {
+        this.currentUrl.set(event.urlAfterRedirects);
+      });
+  }
+
+  ngOnDestroy(): void {
+    this.saveScore();
   }
 
   constructApples() {
@@ -66,5 +85,9 @@ export class LevelComponent {
       this.constructApples();
       document.getElementById(`${element}`)?.classList.remove('right');
     }
+  }
+
+  saveScore() {
+    this.setScore.addScore(this.score);
   }
 }
