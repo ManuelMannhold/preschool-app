@@ -17,6 +17,7 @@ export class LevelComponent{
   private router = inject(Router);
   readonly currentUrl = signal(this.router.url);
   setScore = inject(CountGameService);
+  highestScore = this.loadScoreFromLocalStorage()
   scoreIncreased = false;
   questionIncreased = false;
   correctAudio = new Audio('/assets/sounds/correct-sound.mp3');
@@ -24,6 +25,7 @@ export class LevelComponent{
 
   public ngOnInit(): void {
     this.constructApples();
+    this.highestScore = this.loadScoreFromLocalStorage();
   }
 
   constructor() {
@@ -76,6 +78,10 @@ export class LevelComponent{
       this.score += 1;
       this.scoreIncreased = true;
     }
+
+    if(this.score === this.highestScore +1) {
+      this.highestScore += 1;
+    }
   }
 
   nextQuestion(element: number) {
@@ -89,5 +95,15 @@ export class LevelComponent{
 
   saveScore() {
     this.setScore.addScore(this.score);
+    this.saveScoreToLocalStorage();
   }
+
+  saveScoreToLocalStorage(): void {
+    localStorage.setItem('score', this.score.toString());
+  }
+
+  loadScoreFromLocalStorage(): number {
+    const stored = localStorage.getItem('score');
+    return stored ? parseInt(stored, 10) : 0;
+  } 
 }
