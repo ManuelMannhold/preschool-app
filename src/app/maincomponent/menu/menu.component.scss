@@ -24,6 +24,7 @@ header {
     justify-content: center;
     font-style: italic;
     gap: 10px;
+    font-size: 40px;
 
     span {
         font-weight: 700;
@@ -37,4 +38,15 @@ header {
     flex-direction: column;
     align-items: center;
     justify-content: space-around; 
+}
+
+#overlay {
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.4);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
 }

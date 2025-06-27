@@ -4,6 +4,10 @@
   box-sizing: border-box;
 }
 
+.d-none {
+  display: none!important;
+}
+
 .blue {
   background-color: blue;
 }
@@ -26,10 +30,10 @@ a {
 }
 
 button {
-  padding: 10px 40px;
+  padding: 80px 100px;
   margin: 5px;
   border-radius: 15px;
-  font-size: 32px;
+  font-size: 64px;
   cursor: pointer;
   border: none;
   box-shadow: 1px 1px 5px black;

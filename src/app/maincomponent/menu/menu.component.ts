@@ -13,15 +13,26 @@ import { CountGameService } from '../../count-game.service';
 export class MenuComponent {
 
   public ngOnInit(): void {
-    this.score = this.loadScoreFromLocalStorage();
+    this.score = this.getScore.loadScoreFromLocalStorage();
   }
 
   getScore = inject(CountGameService);
-  score = this.loadScoreFromLocalStorage();
-  scoreLocalStorage = this.loadScoreFromLocalStorage();
+  score = this.getScore.loadScoreFromLocalStorage();
+  scoreLocalStorage = this.getScore.loadScoreFromLocalStorage();
 
-  loadScoreFromLocalStorage(): number {
-    const stored = localStorage.getItem('score');
-    return stored ? parseInt(stored, 10) : 0;
-  } 
+ 
+
+  startNewGame() {
+    if(this.score !== 0) {
+      document.getElementById('overlay')?.classList.remove('d-none');
+    }
+  }
+
+  newGameStart() {
+    this.getScore.newGameStart();
+  }
+
+  continueGame() {
+    this.getScore.continueGame();
+  }
 }
