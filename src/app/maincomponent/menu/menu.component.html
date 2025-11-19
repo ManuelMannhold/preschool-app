@@ -1,15 +1,23 @@
 <div class="container">
-    <div id="content">
-        <div class="container-count-game">
-        <button class="blue" (click)="startNewGame()"><a routerLink="count-game">Zähl mit mir!</a></button>
-            <div>Höchster Punktestand: <span>{{score}}</span></div>
-        </div>
-        <button class="yellow">Zahlen Rythmus</button>
-        <button class="red">Meine Musik</button>
+  <div id="content">
+    <div class="container-count-game">
+      <button class="blue menu-button" (click)="startNewGame()">
+        <a routerLink="count-game">Zähl mit mir!</a>
+      </button>
+      <div>
+        Höchster Punktestand: <span>{{ score }}</span>
+      </div>
     </div>
+    <button class="yellow menu-button">Zahlen Rythmus</button>
+    <button class="red menu-button">Meine Musik</button>
+  </div>
 
-    <div id="overlay" class="d-none">
-        <button (click)="newGameStart()"><a routerLink="count-game">Neues Spiel</a></button>
-        <button (click)="continueGame()"><a routerLink="count-game">Fortsetzen</a></button>
-    </div>
+  <div id="overlay" class="d-none">
+    <button (click)="newGameStart()">
+      <a routerLink="count-game">Neues Spiel</a>
+    </button>
+    <button (click)="continueGame()">
+      <a routerLink="count-game">Fortsetzen</a>
+    </button>
+  </div>
 </div>

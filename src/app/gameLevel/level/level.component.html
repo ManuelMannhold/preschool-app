@@ -1,9 +1,14 @@
 <div class="container">
-  <a routerLink="/"><img class="arrow-back" src="../../../assets/img/arrow-back.png" alt="arrow-back"></a>
+  <a routerLink="/"
+    ><img
+      class="arrow-back"
+      src="../../../assets/img/arrow-back.png"
+      alt="arrow-back"
+  /></a>
   <header>
     <h2>Wie viele Äpfel siehst du?</h2>
-    <h2 id="score">Punktestand: {{score}}</h2>
-    <span class="highscore">Höchster Punktestand: {{highestScore}}</span>
+    <h2 id="score">Punktestand: {{ score }}</h2>
+    <span class="highscore">Höchster Punktestand: {{ highestScore }}</span>
   </header>
 
   <div id="content">
@@ -14,11 +19,35 @@
     </div>
   </div>
   <div class="buttons">
-    <button class="btn-level" id="1" (click)="checkApplesRightOrWrong(1)">1</button>
-    <button class="btn-level" id="2" (click)="checkApplesRightOrWrong(2)">2</button>
-    <button class="btn-level" id="3" (click)="checkApplesRightOrWrong(3)">3</button>
-    <button class="btn-level" id="4" (click)="checkApplesRightOrWrong(4)">4</button>
-    <button class="btn-level" id="5" (click)="checkApplesRightOrWrong(5)">5</button>
-    <button class="btn-level" id="6" (click)="checkApplesRightOrWrong(6)">6</button>
+    <button
+      class="btn-level yellow"
+      id="1"
+      (click)="checkApplesRightOrWrong(1)"
+    >
+      1
+    </button>
+    <button class="btn-level blue" id="2" (click)="checkApplesRightOrWrong(2)">
+      2
+    </button>
+    <button
+      class="btn-level orange"
+      id="3"
+      (click)="checkApplesRightOrWrong(3)"
+    >
+      3
+    </button>
+    <button class="btn-level teal" id="4" (click)="checkApplesRightOrWrong(4)">
+      4
+    </button>
+    <button
+      class="btn-level purple"
+      id="5"
+      (click)="checkApplesRightOrWrong(5)"
+    >
+      5
+    </button>
+    <button class="btn-level pink" id="6" (click)="checkApplesRightOrWrong(6)">
+      6
+    </button>
   </div>
 </div>
