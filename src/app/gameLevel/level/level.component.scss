@@ -24,30 +24,34 @@ h2 {
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
-  gap: 5px;
+  gap: 30px;
 }
 
 .apple-image {
   width: 10%;
   filter: drop-shadow(0 0 2px black);
-  animation: apple-bounce 1.4s ease-in-out infinite;
+  animation: cartoon-bounce 1.2s ease-in-out infinite;
+  transform-origin: center bottom;
 }
 
-@keyframes apple-bounce {
+@keyframes cartoon-bounce {
   0% {
-    transform: translateY(0);
+    transform: translateY(0) scale(1, 1);
   }
-  30% {
-    transform: translateY(-8px);
+  20% {
+    transform: translateY(-10px) scale(1.05, 0.95); /* stretch */
   }
-  50% {
-    transform: translateY(0px);
+  40% {
+    transform: translateY(0) scale(0.95, 1.05); /* squash */
   }
-  70% {
-    transform: translateY(-5px);
+  60% {
+    transform: translateY(-6px) scale(1.03, 0.97);
+  }
+  80% {
+    transform: translateY(0) scale(0.97, 1.03);
   }
   100% {
-    transform: translateY(0);
+    transform: translateY(0) scale(1, 1);
   }
 }
 
