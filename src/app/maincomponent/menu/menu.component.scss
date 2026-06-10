@@ -1,52 +1,171 @@
+/* --- BASIS-STYLING & VARIABLEN --- */
+:root {
+    --primary-red: #FF6B6B;
+    --primary-blue: #4A90E2;
+    --primary-yellow: #FFD93D;
+    --primary-green: #6BCB77;
+    --bg-light: #F7FFF7;
+    --text-dark: #2F2F2F;
+    --shadow-color: rgba(0, 0, 0, 0.15);
+}
+
+* {
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent; /* Verhindert blauen Rahmen auf Handys */
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Quicksand', sans-serif;
+    background-color: var(--bg-light);
+    color: var(--text-dark);
+    overflow: hidden; /* Verhindert Scrollen in der App */
+}
+
+/* --- CONTAINER & LAYOUT --- */
 .container {
     width: 100%;
     height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
+    background: radial-gradient(circle, #ffffff 0%, #f0f0f0 100%);
 }
 
-header {
+#content {
     width: 100%;
-    height: 200px;
+    height: 100%;
     display: flex;
-    text-align: center;
-    justify-content: center;
-    box-shadow: 0 0 15px;
-    font-size: 32px;
-    text-shadow: 1px 1px 2px white;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly; /* Verteilt Buttons gleichmäßig */
+    padding: 40px 20px;
 }
 
+/* --- MENU BUTTONS --- */
+.menu-button {
+    width: 90%;
+    max-width: 400px;
+    min-height: 100px;
+    border: none;
+    border-radius: 30px;
+    font-size: 28px;
+    font-weight: 700;
+    font-family: 'Quicksand', sans-serif;
+    cursor: pointer;
+    position: relative;
+    transition: transform 0.1s ease, box-shadow 0.1s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Link-Styling innerhalb der Buttons */
+.menu-button a {
+    text-decoration: none;
+    color: white;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Farbspezifische Styles mit 3D-Effekt (border-bottom) */
+.blue {
+    background-color: var(--primary-blue);
+    color: white;
+    border-bottom: 8px solid #357ABD;
+    box-shadow: 0 10px 0 #357ABD, 0 15px 20px var(--shadow-color);
+}
+
+.yellow {
+    background-color: var(--primary-yellow);
+    color: #856404; /* Dunklerer Text für bessere Lesbarkeit auf Gelb */
+    border-bottom: 8px solid #E2C020;
+    box-shadow: 0 10px 0 #E2C020, 0 15px 20px var(--shadow-color);
+}
+
+.red {
+    background-color: var(--primary-red);
+    color: white;
+    border-bottom: 8px solid #D14D4D;
+    box-shadow: 0 10px 0 #D14D4D, 0 15px 20px var(--shadow-color);
+}
+
+/* Klick-Effekt */
+.menu-button:active {
+    transform: translateY(6px);
+    border-bottom-width: 2px;
+    box-shadow: 0 2px 0 rgba(0,0,0,0.2), 0 5px 10px var(--shadow-color);
+}
+
+/* --- SCORE ANZEIGE --- */
 .container-count-game {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    font-style: italic;
-    gap: 10px;
-    font-size: 40px;
-
-    span {
-        font-weight: 700;
-    }
-}
-
-#content {
-    height: calc(100vh - 74px);
+    gap: 15px;
     width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-around; 
 }
 
+.container-count-game div {
+    font-size: 22px;
+    background: white;
+    padding: 10px 25px;
+    border-radius: 50px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    border: 2px solid #eee;
+}
+
+.container-count-game span {
+    color: var(--primary-green);
+    font-weight: 900;
+    font-size: 30px;
+    margin-left: 5px;
+}
+
+/* --- OVERLAY STYLING --- */
 #overlay {
+    position: fixed; /* Fixiert über den ganzen Bildschirm */
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100vh;
-    background-color: rgba(0, 0, 0, 0.4);
+    background-color: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(8px);
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    position: absolute;
+    z-index: 1000;
+    gap: 30px;
+}
+
+#overlay button {
+    width: 280px;
+    padding: 25px;
+    font-size: 26px;
+    font-weight: 700;
+    border-radius: 50px;
+    border: none;
+    background: white;
+    cursor: pointer;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+    transition: transform 0.2s;
+}
+
+#overlay button a {
+    text-decoration: none;
+    color: var(--text-dark);
+}
+
+#overlay button:hover {
+    transform: scale(1.05);
+}
+
+/* Hilfsklasse zum Verstecken */
+.d-none {
+    display: none !important;
 }

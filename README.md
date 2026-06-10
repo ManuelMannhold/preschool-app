@@ -25,3 +25,12 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+## Jenkins CI
+
+This repository includes a declarative `Jenkinsfile` at the repository root.
+
+- **What it does:** Runs inside a Node Docker agent, installs dependencies, runs tests, builds the Angular app, and archives the `dist/` artifacts.
+- **How to use:** Create a Jenkins Pipeline job and point it at this repository. The pipeline uses the `node:18-bullseye-slim` image by default.
+- **Notes:** The pipeline runs `npm ci || npm install`, `npm test -- --watch=false`, and `npm run build -- --configuration production`. Adjust stages or the Docker image in `Jenkinsfile` to match your Jenkins environment.
+
